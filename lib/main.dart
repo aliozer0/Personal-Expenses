@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:personel_expenses/widgets/new_transaction.dart';
+import './widgets/new_transaction.dart';
 import './widgets/transcation_list.dart';
+import './widgets/user_transaction.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -38,38 +40,7 @@ class MyHomePage extends StatelessWidget {
                 elevation: 5,
               ),
             ),
-            Card(
-              elevation: 5,
-              child: Container(
-                  child: Column(
-                children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Title'),
-                    controller: titleController,
-                    // onChanged: (value) {
-
-                    // },
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Amount'),
-                    controller: amounController,
-                    // onChanged: (value) {
-                    //   amountInput = value;
-                    // },
-                  ),
-                  TextButton(
-                    child: Text('Add Transcation'),
-                    style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all(Colors.purple)),
-                    onPressed: () {
-                      print(titleController.text);
-                    },
-                  )
-                ],
-              )),
-            ),
-            TranscationList()
+            UserTransactions(),
           ],
         ));
   }
