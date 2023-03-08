@@ -1,4 +1,3 @@
-
 import 'package:flutter/widgets.dart';
 
 class NewTransaction extends StatelessWidget {
