@@ -57,24 +57,18 @@ class _NewTransactionState extends State<NewTransaction> {
             decoration: InputDecoration(labelText: 'Title'),
             controller: titleController,
             onSubmitted: (_) => _submitData(),
-            // onChanged: (value) {
-
-            // },
           ),
           TextField(
             decoration: InputDecoration(labelText: 'Amount'),
             controller: amountController,
             keyboardType: TextInputType.number,
             onSubmitted: (_) => _submitData(),
-            // onChanged: (value) {
-            //   amountInput = value;
-            // },
           ),
           Container(
             height: 70,
             child: Expanded(
-              
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(_selectedDate == null
                       ? 'No Date Chosen'
