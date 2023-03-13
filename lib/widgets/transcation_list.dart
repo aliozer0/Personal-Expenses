@@ -11,26 +11,27 @@ class TranscationList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 600,
       child: transactions.isEmpty
-          ? Column(
-              children: <Widget>[
-                Text(
-                  "No transaciton added yet!",
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 200,
-                  child: Image.asset(
-                    'lib/images/waiting.png',
-                    fit: BoxFit.cover,
+          ? LayoutBuilder(builder: (ctx, constrains) {
+              return Column(
+                children: <Widget>[
+                  Text(
+                    "No transaciton added yet!",
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
-                )
-              ],
-            )
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: constrains.maxHeight * 0.6,
+                    child: Image.asset(
+                      'lib/images/waiting.png',
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                ],
+              );
+            })
           : ListView.builder(
               itemBuilder: (context, index) {
                 return Card(
@@ -51,8 +52,9 @@ class TranscationList extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     subtitle: Text(
-                        DateFormat.yMMM().format(transactions[index].date)),
+                        DateFormat.yMMMd().format(transactions[index].date)),
                     trailing: IconButton(
+                      iconSize: 25,
                       icon: Icon(Icons.delete),
                       color: Theme.of(context).errorColor,
                       onPressed: () => deleteTx(transactions[index].id),
