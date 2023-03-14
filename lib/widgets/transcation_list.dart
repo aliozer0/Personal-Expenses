@@ -53,12 +53,20 @@ class TranscationList extends StatelessWidget {
                     ),
                     subtitle: Text(
                         DateFormat.yMMMd().format(transactions[index].date)),
-                    trailing: IconButton(
-                      iconSize: 25,
-                      icon: Icon(Icons.delete),
-                      color: Theme.of(context).errorColor,
-                      onPressed: () => deleteTx(transactions[index].id),
-                    ),
+                    trailing: MediaQuery.of(context).size.width > 450
+                        ? TextButton.icon(
+                            icon: Icon(Icons.delete),
+                            label: Text('Delete'),
+                            style: TextButton.styleFrom(
+                                primary: Theme.of(context).errorColor),
+                            onPressed: () => deleteTx(transactions[index].id),
+                          )
+                        : IconButton(
+                            iconSize: 25,
+                            icon: Icon(Icons.delete),
+                            color: Theme.of(context).errorColor,
+                            onPressed: () => deleteTx(transactions[index].id),
+                          ),
                   ),
                 );
               },
